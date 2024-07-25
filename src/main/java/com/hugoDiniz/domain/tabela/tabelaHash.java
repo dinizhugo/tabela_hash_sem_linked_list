@@ -19,6 +19,15 @@ public class tabelaHash {
         return currentList;
     }
 
+    private int customHash(String matricula) {
+        int hash = 0;
+
+        for (int i = 0; i < matricula.length(); i++) {
+            hash += matricula.charAt(i);
+        }
+        return Math.abs(hash % currentList.length);
+    }
+
     private boolean isFull() {
         int countNonNull = 1;
 
