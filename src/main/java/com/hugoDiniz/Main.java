@@ -29,8 +29,5 @@ public class Main {
         System.out.println(tabelaHash.getAllAlunos());
         System.out.println("size: " + tabelaHash.getSize());
 
-
-
-
     }
 }
