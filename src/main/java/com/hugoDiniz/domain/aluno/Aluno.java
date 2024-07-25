@@ -39,4 +39,9 @@ public class Aluno {
     public int hashCode() {
         return Objects.hashCode(matricula);
     }
+
+    @Override
+    public String toString() {
+        return "'" + getMatricula() + "':" + "'" + getNome() + "'";
+    }
 }
