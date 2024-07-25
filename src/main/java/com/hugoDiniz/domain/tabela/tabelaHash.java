@@ -32,11 +32,17 @@ public class tabelaHash {
 
     public void insertAluno(String matricula, String nome) {
         if (isFull()) {
-            return;
+            resizeList();
         }
 
         int pos = customHash(matricula);
-        currentList[pos] = new Aluno(matricula,nome);
+        for (int i = pos; i < currentList.length; i++) {
+            if (currentList[i] == null) {
+                currentList[i] = new Aluno(matricula,nome);
+                return;
+            }
+        }
+        resizeList();
     }
 
     private int customHash(String matricula) {
@@ -58,6 +64,18 @@ public class tabelaHash {
         }
 
         return countNonNull == currentList.length;
+    }
+
+    private void resizeList() {
+        int doubleSize = getSize() * 2;
+        Aluno[] oldList = currentList;
+        currentList = new Aluno[doubleSize];
+
+        for (Aluno aluno : oldList) {
+            if (aluno != null) {
+                insertAluno(aluno.getMatricula(), aluno.getNome());
+            }
+        }
     }
 
 }
