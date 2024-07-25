@@ -30,6 +30,15 @@ public class tabelaHash {
         return null;
     }
 
+    public void insertAluno(String matricula, String nome) {
+        if (isFull()) {
+            return;
+        }
+
+        int pos = customHash(matricula);
+        currentList[pos] = new Aluno(matricula,nome);
+    }
+
     private int customHash(String matricula) {
         int hash = 0;
 
