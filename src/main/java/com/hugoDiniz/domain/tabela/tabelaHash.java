@@ -45,6 +45,15 @@ public class tabelaHash {
         resizeList();
     }
 
+    public void removeAluno(String matricula) {
+        Aluno aluno = getAlunoByMatricula(matricula);
+        int pos = customHash(matricula);
+
+        if (aluno != null) {
+            currentList[pos] = new Aluno("-1", "aluno removido: " + aluno.getNome());
+        }
+    }
+
     private int customHash(String matricula) {
         int hash = 0;
 
