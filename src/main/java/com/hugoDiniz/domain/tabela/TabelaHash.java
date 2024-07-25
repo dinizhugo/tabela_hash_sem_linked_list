@@ -4,11 +4,11 @@ import com.hugoDiniz.domain.aluno.Aluno;
 
 import java.util.Objects;
 
-public class tabelaHash {
+public class TabelaHash {
     private int size;
     private Aluno[] currentList;
 
-    public tabelaHash(int size) {
+    public TabelaHash(int size) {
         this.size = size;
         this.currentList = new Aluno[size];
     }
@@ -52,6 +52,19 @@ public class tabelaHash {
         if (aluno != null) {
             currentList[pos] = new Aluno("-1", "aluno removido: " + aluno.getNome());
         }
+    }
+
+    public String getAllAlunos() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("{");
+
+        for (Aluno aluno: currentList) {
+            stringBuilder.append(aluno);
+            if (aluno != null) { stringBuilder.append(","); }
+        }
+
+        stringBuilder.append("}");
+        return stringBuilder.toString();
     }
 
     private int customHash(String matricula) {
