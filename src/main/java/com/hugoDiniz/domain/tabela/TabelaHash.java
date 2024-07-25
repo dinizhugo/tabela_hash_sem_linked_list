@@ -23,7 +23,7 @@ public class TabelaHash {
 
     public Aluno getAlunoByMatricula(String matricula) {
         for (Aluno aluno: currentList) {
-            if (Objects.equals(aluno.getMatricula(), matricula)) {
+            if (aluno != null && Objects.equals(aluno.getMatricula(), matricula)) {
                 return aluno;
             }
         }
@@ -31,9 +31,9 @@ public class TabelaHash {
     }
 
     public void insertAluno(String matricula, String nome) {
-        if (isFull()) {
-            resizeList();
-        }
+        if (getAlunoByMatricula(matricula) != null) { return;}
+
+        if (isFull()) { resizeList();}
 
         int pos = customHash(matricula);
         for (int i = pos; i < currentList.length; i++) {
@@ -58,9 +58,19 @@ public class TabelaHash {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("{");
 
-        for (Aluno aluno: currentList) {
-            stringBuilder.append(aluno);
-            if (aluno != null) { stringBuilder.append(","); }
+        boolean first = true;
+        for (int i = 0; i < currentList.length; i++) {
+            if (!first) {
+                stringBuilder.append(", ");
+            }
+
+            if (currentList[i] == null) {
+                stringBuilder.append("null");
+            } else {
+                stringBuilder.append(currentList[i].toString());
+            }
+
+            first = false;
         }
 
         stringBuilder.append("}");
