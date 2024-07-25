@@ -19,6 +19,16 @@ public class tabelaHash {
         return currentList;
     }
 
+    private boolean isFull() {
+        int countNonNull = 1;
 
+        for (Aluno aluno: currentList) {
+            if (aluno != null) {
+                countNonNull++;
+            }
+        }
+
+        return countNonNull == currentList.length;
+    }
 
 }
