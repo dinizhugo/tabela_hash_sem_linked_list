@@ -47,9 +47,9 @@ public class TabelaHash {
 
     public void removeAluno(String matricula) {
         Aluno aluno = getAlunoByMatricula(matricula);
-        int pos = customHash(matricula);
 
         if (aluno != null) {
+            int pos = customHash(matricula);
             currentList[pos] = new Aluno("-1", "aluno removido: " + aluno.getNome());
         }
     }
@@ -102,6 +102,7 @@ public class TabelaHash {
         int doubleSize = getSize() * 2;
         Aluno[] oldList = currentList;
         currentList = new Aluno[doubleSize];
+        size = doubleSize;
 
         for (Aluno aluno : oldList) {
             if (aluno != null) {
