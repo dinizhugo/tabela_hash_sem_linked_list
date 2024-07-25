@@ -23,7 +23,7 @@ public class TabelaHash {
 
     public Aluno getAlunoByMatricula(String matricula) {
         for (Aluno aluno: currentList) {
-            if (aluno != null && Objects.equals(aluno.getMatricula(), matricula)) {
+            if (aluno != null && Objects.equals(aluno.getMatricula(), matricula) && !Objects.equals(aluno.getMatricula(), "-1")) {
                 return aluno;
             }
         }
@@ -37,7 +37,7 @@ public class TabelaHash {
 
         int pos = customHash(matricula);
         for (int i = pos; i < currentList.length; i++) {
-            if (currentList[i] == null) {
+            if (currentList[i] == null || Objects.equals(currentList[i].getMatricula(), "-1")) {
                 currentList[i] = new Aluno(matricula,nome);
                 return;
             }
@@ -50,7 +50,7 @@ public class TabelaHash {
 
         if (aluno != null) {
             int pos = customHash(matricula);
-            currentList[pos] = new Aluno("-1", "aluno removido: " + aluno.getNome());
+            currentList[pos] = new Aluno("-1", "Not a student");
         }
     }
 

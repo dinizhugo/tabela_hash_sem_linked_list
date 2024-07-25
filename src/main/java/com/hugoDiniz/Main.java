@@ -11,10 +11,11 @@ public class Main {
         tabelaHash.insertAluno("1", "b");
         tabelaHash.insertAluno("2", "c");
         tabelaHash.insertAluno("3", "d");
+        System.out.println(tabelaHash.getAllAlunos());
         System.out.println("size: " + tabelaHash.getSize());
 
-        System.out.println(tabelaHash.getAllAlunos());
         System.out.println("============================");
+
         System.out.println("Aumentando a tabela com mais alunos:");
         tabelaHash.insertAluno("3", "e");
         tabelaHash.insertAluno("4", "f");
@@ -24,10 +25,20 @@ public class Main {
         System.out.println("size: " + tabelaHash.getSize());
 
         System.out.println("============================");
+
         System.out.println("Removendo aluno Clesion:");
         tabelaHash.removeAluno("6");
         System.out.println(tabelaHash.getAllAlunos());
         System.out.println("size: " + tabelaHash.getSize());
 
+        System.out.println("============================");
+
+        System.out.println("Adcionando mais:");
+        tabelaHash.insertAluno("5", "h");
+        tabelaHash.insertAluno("6", "i");
+        tabelaHash.insertAluno("7", "j");
+        tabelaHash.insertAluno("8", "k");
+        System.out.println(tabelaHash.getAllAlunos());
+        System.out.println("size: " + tabelaHash.getSize());
     }
 }
