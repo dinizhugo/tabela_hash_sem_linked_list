@@ -2,6 +2,8 @@ package com.hugoDiniz.domain.tabela;
 
 import com.hugoDiniz.domain.aluno.Aluno;
 
+import java.util.Objects;
+
 public class tabelaHash {
     private int size;
     private Aluno[] currentList;
@@ -17,6 +19,15 @@ public class tabelaHash {
 
     public Aluno[] getCurrentList() {
         return currentList;
+    }
+
+    public Aluno getAlunoByMatricula(String matricula) {
+        for (Aluno aluno: currentList) {
+            if (Objects.equals(aluno.getMatricula(), matricula)) {
+                return aluno;
+            }
+        }
+        return null;
     }
 
     private int customHash(String matricula) {
